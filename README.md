@@ -161,7 +161,7 @@ The key proof: the backend VM has no Tailscale client, no public IP, and is not 
 
 ## Reflection & AI Disclosure
 
-This project was built with assistance from Claude (Anthropic). AI was used for:
+Used Claude (Anthropic) as a reference during development — primarily to validate my Terraform syntax and sanity-check my approach. All architecture decisions, debugging, and deployment were my own.
 
 - **Initial scaffolding** — Terraform structure, provider configuration, cloud-init templates
 - **Debugging** — troubleshooting Multipass provider timeouts and routing conflicts during live deployment
