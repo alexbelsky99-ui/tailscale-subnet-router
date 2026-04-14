@@ -163,11 +163,6 @@ The key proof: the backend VM has no Tailscale client, no public IP, and is not 
 
 Used Claude (Anthropic) as a reference during development — primarily to validate my Terraform syntax and sanity-check my approach. All architecture decisions, debugging, and deployment were my own.
 
-- **Initial scaffolding** — Terraform structure, provider configuration, cloud-init templates
-- **Debugging** — troubleshooting Multipass provider timeouts and routing conflicts during live deployment
-- **README drafting** — structure and wording, with editing for accuracy
-
-All code was reviewed and validated through a complete live deployment. The architecture decisions, debugging approach, and tradeoff reasoning are my own. I believe being transparent about AI tool usage is important — particularly for a Solutions Engineer role where helping customers adopt new technology effectively is the core job.
 
 ---
 
