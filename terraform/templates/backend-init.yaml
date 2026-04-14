@@ -1,0 +1,39 @@
+#cloud-config
+# Backend VM — nginx only, no Tailscale, not internet-reachable
+
+package_update: true
+package_upgrade: false
+
+packages:
+  - nginx
+
+runcmd:
+  - systemctl enable nginx
+  - systemctl start nginx
+  - |
+    HOST=$(hostname)
+    PRIVATE_IP=$(hostname -I | awk '{print $1}')
+    cat > /var/www/html/index.html << HTMLEOF
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <meta charset="UTF-8"/>
+      <title>Tailscale Private Backend</title>
+      <style>
+        body { font-family: monospace; background: #0d1117; color: #c9d1d9; padding: 2rem; }
+        h1   { color: #58a6ff; }
+        .ok  { color: #3fb950; font-weight: bold; }
+        .tag { background: #1f6feb; padding: .2rem .6rem; border-radius: 4px; font-size: .8rem; }
+      </style>
+    </head>
+    <body>
+      <h1>&#x1F512; Tailscale Private Backend</h1>
+      <p><span class="ok">&#x2714; Subnet routing is working!</span></p>
+      <p>Host: <strong>$HOST</strong></p>
+      <p>Private IP: <strong>$PRIVATE_IP</strong></p>
+      <p><span class="tag">192.168.64.0/24</span> is advertised to the Tailnet by the subnet router.</p>
+      <hr/>
+      <small>This VM has no public IP. You reached it through Tailscale.</small>
+    </body>
+    </html>
+    HTMLEOF

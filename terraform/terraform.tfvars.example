@@ -1,0 +1,8 @@
+# Copy to terraform.tfvars and fill in your values.
+# Never commit terraform.tfvars — it contains secrets.
+
+tailscale_api_key      = "tskey-api-..."
+tailscale_tailnet      = "you@gmail.com"
+
+# Multipass default network CIDR — leave as-is unless yours differs
+multipass_network_cidr = "192.168.64.0/24"
