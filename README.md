@@ -161,7 +161,7 @@ The key proof: the backend VM has no Tailscale client, no public IP, and is not 
 
 ## Reflection & AI Disclosure
 
-Used Claude (Anthropic) as a reference during development — primarily to validate my Terraform syntax and sanity-check my approach. All architecture decisions, debugging, and deployment were my own.
+Used Claude (Anthropic) as a reference during development — primarily to validate my Terraform syntax and sanity-check my approach. All architecture decisions, debugging, and deployment were my own. All code was reviewed and validated through a complete live deployment. I believe being transparent about AI tool usage is important — particularly for a Solutions Engineer role where helping customers adopt new technology effectively is the core job.
 
 
 ---
