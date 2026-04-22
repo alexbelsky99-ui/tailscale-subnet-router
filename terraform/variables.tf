@@ -3,32 +3,46 @@ variable "tailscale_api_key" {
   type        = string
   sensitive   = true
 }
-
 variable "tailscale_tailnet" {
-  description = "Your Tailnet name (e.g. 'you@gmail.com')"
+  description = "Your Tailnet name"
   type        = string
 }
-
-variable "multipass_network_cidr" {
-  description = "CIDR of the Multipass VM network — advertised to the Tailnet"
-  type        = string
-  default     = "192.168.64.0/24"
+variable "admin_username" {
+  type    = string
+  default = "azureuser"
 }
-
-variable "vm_cpus" {
-  description = "Number of CPUs per VM"
-  type        = number
-  default     = 1
+variable "admin_ssh_public_key" {
+  type = string
 }
-
-variable "vm_memory" {
-  description = "RAM per VM"
-  type        = string
-  default     = "512M"
+variable "location" {
+  type    = string
+  default = "eastus"
 }
-
-variable "vm_disk" {
-  description = "Disk size per VM"
-  type        = string
-  default     = "5G"
+variable "resource_group_name" {
+  type    = string
+  default = "rg-tailscale-demo"
+}
+variable "vnet_cidr" {
+  type    = string
+  default = "10.0.0.0/16"
+}
+variable "public_subnet_cidr" {
+  type    = string
+  default = "10.0.1.0/24"
+}
+variable "private_subnet_cidr" {
+  type    = string
+  default = "10.0.2.0/24"
+}
+variable "vm_size" {
+  type    = string
+  default = "Standard_B1s"
+}
+variable "tags" {
+  type = map(string)
+  default = {
+    project     = "tailscale-demo"
+    environment = "interview"
+    managed-by  = "terraform"
+  }
 }

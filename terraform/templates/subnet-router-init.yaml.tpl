@@ -1,13 +1,10 @@
 #cloud-config
-# Subnet Router — installs Tailscale and advertises the private CIDR
-
 package_update: true
 package_upgrade: false
-
 packages:
   - curl
   - iptables
-
+  - iptables-persistent
 write_files:
   - path: /etc/sysctl.d/99-tailscale.conf
     owner: root:root
@@ -15,7 +12,6 @@ write_files:
     content: |
       net.ipv4.ip_forward = 1
       net.ipv6.conf.all.forwarding = 1
-
 runcmd:
   - sysctl -p /etc/sysctl.d/99-tailscale.conf
   - curl -fsSL https://tailscale.com/install.sh | sh
